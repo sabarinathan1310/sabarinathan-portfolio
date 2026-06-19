@@ -64,7 +64,7 @@ export default function Navigation() {
           <img
             src="/profile.png"
             alt="Sabarinathan Profile"
-            className="w-7 h-7 rounded-full object-cover object-top border border-indigo-500/50"
+            className="w-7 h-7 rounded-full object-cover border border-slate-700/60"
           />
           SABARINATHAN
         </button>

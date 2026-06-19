@@ -1,6 +1,5 @@
 import React from 'react';
 import { Download, Mail, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 const GithubIcon = ({ size = 20, className = "" }) => (
@@ -24,61 +23,47 @@ export default function Hero() {
   return (
     <section id="hero" className="min-h-screen relative flex items-center pt-28 lg:pt-24 overflow-hidden">
       {/* Background Decorative Gradients */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-indigo-500/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none animate-pulse-subtle"></div>
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[300px] md:w-[450px] h-[300px] md:h-[450px] bg-cyan-500/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-indigo-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[300px] md:w-[450px] h-[300px] md:h-[450px] bg-cyan-500/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center z-10 w-full">
         
-        {/* Left Column: Text Content */}
-        <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start order-2 lg:order-1">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Tag / Badge */}
-            <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/40 border border-indigo-900/50 rounded-full mb-6">
-              Available for Internships & IT Roles
-            </span>
-          </motion.div>
+        {/* Left Column: Profile Photo */}
+        <div className="lg:col-span-5 flex justify-center lg:justify-start items-center mt-8 lg:mt-0">
+          {/* Simple Circular Profile Image Frame with a thin 3px border */}
+          <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full overflow-hidden border-[3px] border-slate-700/60 bg-dark-card shadow-lg">
+            <img
+              src="/profile.png"
+              alt="Sabarinathan Profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right Column: Text Content */}
+        <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
+          {/* Tag / Badge */}
+          <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/40 border border-indigo-900/50 rounded-full mb-6">
+            Available for Internships & IT Roles
+          </span>
 
           {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4 leading-none"
-          >
+          <h1 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4 leading-none">
             Hi, I'm <span className="gradient-text">{name}</span>
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-6 font-outfit"
-          >
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-6 font-outfit">
             {title}
-          </motion.h2>
+          </h2>
 
           {/* Summary */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sm sm:text-base text-gray-400 max-w-xl mb-8 leading-relaxed"
-          >
+          <p className="text-sm sm:text-base text-gray-400 max-w-xl mb-8 leading-relaxed">
             {summary}
-          </motion.p>
+          </p>
 
           {/* Buttons / Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center w-full sm:w-auto mb-10"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center w-full sm:w-auto mb-10">
             <a
               href="/Sabarinathan_Resume.pdf"
               download="Sabarinathan_Resume.pdf"
@@ -94,15 +79,10 @@ export default function Hero() {
               Contact Me
               <ArrowRight size={16} />
             </button>
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex gap-5 justify-center lg:justify-start items-center"
-          >
+          <div className="flex gap-5 justify-center lg:justify-start items-center">
             <a
               href={github}
               target="_blank"
@@ -128,31 +108,7 @@ export default function Hero() {
             >
               <Mail size={18} />
             </button>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Profile Picture Circle */}
-        <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 mt-8 lg:mt-0">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            {/* Subtle dark backing glow */}
-            <div className="absolute inset-0 rounded-full bg-cyan-950/15 blur-[25px]"></div>
-            
-            {/* Circular Profile Image Frame with subtle gradient border */}
-            <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full p-1 bg-gradient-to-tr from-indigo-500/40 via-cyan-500/40 to-transparent shadow-2xl">
-              <div className="w-full h-full rounded-full overflow-hidden bg-dark-card flex items-center justify-center border border-slate-900">
-                <img
-                  src="/profile.png"
-                  alt="Sabarinathan Profile"
-                  className="w-full h-full object-cover object-top scale-105"
-                />
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
 
       </div>
