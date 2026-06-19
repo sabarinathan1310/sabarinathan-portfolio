@@ -131,7 +131,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column: Profile Picture Card */}
+        {/* Right Column: Profile Picture Circle */}
         <div className="lg:col-span-5 flex justify-center items-center order-1 lg:order-2 mt-8 lg:mt-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -139,16 +139,16 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Subtle blue glow circle around image */}
-            <div className="absolute inset-0 rounded-2xl bg-cyan-500/10 blur-[40px] animate-pulse-subtle"></div>
+            {/* Subtle dark backing glow */}
+            <div className="absolute inset-0 rounded-full bg-cyan-950/15 blur-[25px]"></div>
             
-            {/* Profile image card */}
-            <div className="relative w-[260px] h-[340px] sm:w-[300px] sm:h-[400px] rounded-2xl p-1 bg-gradient-to-b from-indigo-500 via-cyan-500 to-transparent shadow-2xl">
-              <div className="w-full h-full rounded-2xl overflow-hidden bg-dark-card flex items-center justify-center border border-slate-900">
+            {/* Circular Profile Image Frame with subtle gradient border */}
+            <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full p-1 bg-gradient-to-tr from-indigo-500/40 via-cyan-500/40 to-transparent shadow-2xl">
+              <div className="w-full h-full rounded-full overflow-hidden bg-dark-card flex items-center justify-center border border-slate-900">
                 <img
                   src="/profile.png"
                   alt="Sabarinathan Profile"
-                  className="w-full h-full object-cover object-top scale-102"
+                  className="w-full h-full object-cover object-top scale-105"
                 />
               </div>
             </div>
