@@ -34,9 +34,16 @@ export default function About() {
               My Journey & Mindset
             </h3>
             
-            <p className="text-gray-400 leading-relaxed text-base">
-              {summary}
-            </p>
+            <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+              <img
+                src="/profile.png"
+                alt="Sabarinathan Profile"
+                className="w-32 h-32 sm:w-36 sm:h-36 rounded-full object-cover object-top border-2 border-indigo-500/50 shadow-lg shadow-indigo-950/30 flex-shrink-0"
+              />
+              <p className="text-gray-400 leading-relaxed text-base">
+                {summary}
+              </p>
+            </div>
 
             <div className="p-6 rounded-xl bg-dark-card border border-dark-border gradient-bg">
               <h4 className="font-semibold text-white mb-2 font-outfit text-lg">Career Objective</h4>

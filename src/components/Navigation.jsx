@@ -59,9 +59,13 @@ export default function Navigation() {
         {/* Logo */}
         <button
           onClick={() => scrollToSection('hero')}
-          className="font-outfit text-xl font-bold tracking-tight text-white flex items-center gap-1.5 focus:outline-none"
+          className="font-outfit text-xl font-bold tracking-tight text-white flex items-center gap-2.5 focus:outline-none"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 animate-pulse-subtle"></span>
+          <img
+            src="/profile.png"
+            alt="Sabarinathan Profile"
+            className="w-7 h-7 rounded-full object-cover object-top border border-indigo-500/50"
+          />
           SABARINATHAN
         </button>
 
