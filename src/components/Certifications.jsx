@@ -57,10 +57,15 @@ export default function Certifications() {
                   {cert.description}
                 </p>
 
-                <div className="mt-5 flex items-center gap-1.5 text-xs text-indigo-400 group-hover:text-indigo-300 font-semibold cursor-pointer">
-                  Verify Credential
-                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-                </div>
+                <a
+                  href={cert.pdfPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 font-semibold w-fit transition-colors duration-200"
+                >
+                  View Certificate
+                  <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
               </div>
             </div>
           ))}
