@@ -128,28 +128,28 @@ export const portfolioData = {
       issuer: "DonBosco Tech, Accenture",
       duration: "40 days Course",
       description: "Intense course covering foundational web development architectures, front-end coding, and responsive design systems.",
-      pdfPath: "/certificates/accenture_web_dev.pdf"
+      pdfPath: "/certificates/don_bosco_web_development.pdf"
     },
     {
       title: "AI and Green Skills",
       issuer: "Edunet Foundation",
       duration: "Professional Certificate",
       description: "Explored artificial intelligence applications, green technology concepts, and sustainable engineering processes.",
-      pdfPath: "/certificates/edunet_ai_skills.pdf"
+      pdfPath: "/certificates/NM_Certificate.pdf"
     },
     {
       title: "RPA Foundation Course (Diploma)",
       issuer: "UiPath",
       duration: "Diploma Certification",
       description: "Mastered basic robotic process automation principles, building workflow bots, and orchestrating automation tasks.",
-      pdfPath: "/certificates/uipath_rpa.pdf"
+      pdfPath: "/certificates/NM_Certificate (1).pdf"
     },
     {
       title: "Experience Based Project Learning",
       issuer: "IBM",
       duration: "Project Badge",
       description: "Acquired cloud development, team collaboration, and Agile software development skills through industry projects.",
-      pdfPath: "/certificates/ibm_project_learning.pdf"
+      pdfPath: "/certificates/NM_Certificate (2).pdf"
     }
   ]
 };
