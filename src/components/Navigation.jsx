@@ -43,10 +43,12 @@ export default function Navigation() {
 
   const scrollToSection = (id) => {
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 200);
   };
 
   return (
@@ -55,18 +57,18 @@ export default function Navigation() {
         scrolled ? 'glass-effect border-b border-dark-border py-4 shadow-lg' : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center w-full">
         {/* Logo */}
         <button
           onClick={() => scrollToSection('hero')}
-          className="font-outfit text-xl font-bold tracking-tight text-white flex items-center gap-2.5 focus:outline-none"
+          className="font-outfit text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-tight text-white flex items-center gap-1.5 sm:gap-2.5 focus:outline-none"
         >
           <img
             src="/profile.png"
             alt="Sabarinathan Profile"
-            className="w-7 h-7 rounded-full object-cover border border-slate-700/60"
+            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-slate-700/60 flex-shrink-0"
           />
-          SABARINATHAN
+          <span className="truncate">SABARINATHAN</span>
         </button>
 
         {/* Desktop Links */}
