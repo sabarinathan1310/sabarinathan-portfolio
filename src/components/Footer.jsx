@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import CurvedStar from './CurvedStar';
 
 const GithubIcon = ({ size = 18, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -29,25 +30,25 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-dark-border py-12">
+    <footer className="bg-[#0A0A0A] border-t border-[#3A2F0B] py-12">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
         
         {/* Left: Brand */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <button
             onClick={() => scrollToSection('hero')}
-            className="font-outfit text-lg font-bold tracking-tight text-white flex items-center gap-1.5 focus:outline-none"
+            className="font-poppins text-lg font-bold tracking-tight text-[#F5F5F5] flex items-center gap-2 focus:outline-none group"
           >
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500"></span>
-            SABARINATHAN
+            <CurvedStar size={16} color="#FFD700" className="group-hover:text-[#D4AF37] transition-colors" style={{ filter: 'drop-shadow(0 0 6px rgba(255,215,0,0.5))' }} />
+            SABARINATHAN <span className="text-[#D4AF37]">K</span>
           </button>
-          <p className="text-gray-500 text-xs mt-1.5 font-medium">
+          <p className="text-[#B8B8B8]/70 text-xs mt-1.5 font-medium">
             Computer Science Engineering Student
           </p>
         </div>
 
         {/* Middle: Links */}
-        <ul className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-400">
+        <ul className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-[#B8B8B8]/80">
           <li>
             <button onClick={() => scrollToSection('about')} className="hover:text-white transition-colors">About</button>
           </li>
@@ -75,7 +76,7 @@ export default function Footer() {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-[#B8B8B8] hover:text-white transition-colors"
               aria-label="GitHub"
             >
               <GithubIcon size={18} />
@@ -84,20 +85,20 @@ export default function Footer() {
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-[#B8B8B8] hover:text-white transition-colors"
               aria-label="LinkedIn"
             >
               <LinkedinIcon size={18} />
             </a>
             <a
               href={`mailto:${email}`}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-[#B8B8B8] hover:text-white transition-colors"
               aria-label="Email"
             >
               <Mail size={18} />
             </a>
           </div>
-          <p className="text-gray-600 text-[10px]">
+          <p className="text-[#B8B8B8]/40 text-[10px]">
             &copy; {currentYear} {name}. All rights reserved.
           </p>
         </div>

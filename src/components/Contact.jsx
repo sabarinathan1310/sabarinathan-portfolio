@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Copy, Check, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Check, Send, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 const GithubIcon = ({ size = 16, className = "" }) => (
@@ -23,17 +24,9 @@ export default function Contact() {
   // States for form handling
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState({});
-  const [copiedField, setCopiedField] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(null);
-
-  // Quick copy helpers
-  const handleCopy = (text, fieldName) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(fieldName);
-    setTimeout(() => setCopiedField(null), 2000);
-  };
 
   // Input validation
   const validateForm = () => {
@@ -51,22 +44,27 @@ export default function Contact() {
     return Object.keys(formErrors).length === 0;
   };
 
-  // Submit handler
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitError(null);
     if (validateForm()) {
       setIsSubmitting(true);
+      setSubmitError(null);
+      
       try {
         const response = await fetch("https://formspree.io/f/xbdevgkl", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData)
         });
-
+        
         if (response.ok) {
           setIsSubmitting(false);
           setIsSubmitted(true);
@@ -85,218 +83,257 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <section id="contact" className="py-24 relative overflow-hidden bg-transparent">
+      {/* Background glow blobs */}
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#FFD700]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-outfit text-3xl md:text-4xl font-bold text-white mb-4">
-            Get In <span className="gradient-text">Touch</span>
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#F5F5F5] mb-4">
+            Let's Build <span className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] bg-clip-text text-transparent">Something Together</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
-          <p className="text-gray-400 mt-4 text-sm max-w-lg mx-auto">
+          <div className="w-16 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
+          <p className="text-[#B8B8B8] mt-4 text-xs sm:text-sm max-w-lg mx-auto font-normal">
             Have an open role or internship? Drop a message or contact me directly through the details below.
           </p>
         </div>
 
         {/* Content Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
           {/* Contact Details Column */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-8">
             <div className="space-y-6">
-              <h3 className="font-outfit text-2xl font-bold text-white">
-                Contact Details
+              <h3 className="font-poppins text-xl sm:text-2xl font-bold text-white">
+                Contact Coordinates
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Feel free to copy my details to your clipboard or check out my profiles on LinkedIn and GitHub. I look forward to connecting with recruiters and developers!
+              <p className="text-[#B8B8B8] text-xs sm:text-sm leading-relaxed">
+                Connect with me instantly through the glowing buttons below, or use the form to drop me a line.
               </p>
 
-              {/* Detail Items */}
-              <div className="space-y-4 pt-4">
+              {/* Glowing buttons for Email, LinkedIn, GitHub */}
+              <div className="flex flex-col gap-4">
                 
-                {/* Email Item */}
-                <div className="p-4 rounded-xl bg-dark-card border border-dark-border flex items-center justify-between group hover:border-indigo-500/30 transition-all duration-200">
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
-                      <Mail size={18} />
-                    </div>
-                    <div>
-                      <span className="block text-[10px] uppercase font-bold text-gray-500">Email Address</span>
-                      <a href={`mailto:${email}`} className="text-sm text-gray-200 font-medium hover:text-indigo-400 transition-colors">
-                        {email}
-                      </a>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => handleCopy(email, 'email')}
-                    className="p-1.5 rounded-md hover:bg-slate-800 text-gray-400 hover:text-white transition-all duration-200"
-                    title="Copy Email"
+                {/* Email Button */}
+                <div className="relative group">
+                  <a
+                    href={`mailto:${email}`}
+                    className="flex items-center justify-between p-4 rounded-xl border border-[#3A2F0B] bg-[#D4AF37]/5 hover:bg-[#D4AF37] hover:text-[#0A0A0A] font-bold uppercase tracking-wider text-xs transition-all duration-300 w-full"
                   >
-                    {copiedField === 'email' ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
-                  </button>
-                </div>
-
-                {/* Phone Item */}
-                <div className="p-4 rounded-xl bg-dark-card border border-dark-border flex items-center justify-between group hover:border-indigo-500/30 transition-all duration-200">
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400">
-                      <Phone size={18} />
+                    <div className="flex items-center gap-3">
+                      <Mail size={16} className="text-[#D4AF37] group-hover:text-[#0A0A0A] transition-colors" />
+                      <span>Email Me</span>
                     </div>
-                    <div>
-                      <span className="block text-[10px] uppercase font-bold text-gray-500">Phone Number</span>
-                      <a href={`tel:${phone}`} className="text-sm text-gray-200 font-medium hover:text-cyan-400 transition-colors">
-                        {phone}
-                      </a>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => handleCopy(phone, 'phone')}
-                    className="p-1.5 rounded-md hover:bg-slate-800 text-gray-400 hover:text-white transition-all duration-200"
-                    title="Copy Phone"
-                  >
-                    {copiedField === 'phone' ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
-                  </button>
-                </div>
-
-                {/* Location Item */}
-                <div className="p-4 rounded-xl bg-dark-card border border-dark-border flex items-center gap-3.5 group hover:border-indigo-500/30 transition-all duration-200">
-                  <div className="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] uppercase font-bold text-gray-500">Location</span>
-                    <span className="text-sm text-gray-200 font-medium">
-                      {location}
+                    <span className="text-[10px] text-slate-500 font-semibold group-hover:text-[#0A0A0A] transition-colors truncate max-w-[140px] sm:max-w-none">
+                      {email}
                     </span>
-                  </div>
+                  </a>
+                </div>
+
+                {/* LinkedIn Button (Gold highlight) */}
+                <div className="relative group">
+                  <a
+                    href={linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 rounded-xl border border-[#3A2F0B] bg-[#FFD700]/5 hover:bg-[#FFD700] hover:text-[#0A0A0A] font-bold uppercase tracking-wider text-xs transition-all duration-300 w-full"
+                  >
+                    <div className="flex items-center gap-3">
+                      <LinkedinIcon size={16} className="text-[#FFD700] group-hover:text-[#0A0A0A] transition-colors" />
+                      <span>LinkedIn Profile</span>
+                    </div>
+                    <span className="text-[10px] text-slate-500 font-semibold group-hover:text-[#0A0A0A] transition-colors">
+                      sabariengineer
+                    </span>
+                  </a>
+                </div>
+
+                {/* GitHub Button */}
+                <div className="relative group">
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 rounded-xl border border-[#3A2F0B] bg-[#D4AF37]/5 hover:bg-[#FFD700] hover:text-[#0A0A0A] font-bold uppercase tracking-wider text-xs transition-all duration-300 w-full"
+                  >
+                    <div className="flex items-center gap-3">
+                      <GithubIcon size={16} className="text-[#D4AF37] group-hover:text-[#0A0A0A] transition-colors" />
+                      <span>GitHub Code</span>
+                    </div>
+                    <span className="text-[10px] text-slate-500 font-semibold group-hover:text-[#0A0A0A] transition-colors">
+                      sabarinathan1310
+                    </span>
+                  </a>
                 </div>
 
               </div>
-            </div>
 
-            {/* Social Cards */}
-            <div className="flex gap-4">
-              <a
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-3 rounded-xl bg-dark-card border border-dark-border hover:border-indigo-500/50 flex items-center justify-center gap-2 text-xs font-semibold text-gray-300 hover:text-white transition-all duration-200"
-              >
-                <LinkedinIcon size={16} className="text-indigo-400" />
-                LinkedIn Profile
-              </a>
-              <a
-                href={github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-3 rounded-xl bg-dark-card border border-dark-border hover:border-cyan-500/50 flex items-center justify-center gap-2 text-xs font-semibold text-gray-300 hover:text-white transition-all duration-200"
-              >
-                <GithubIcon size={16} className="text-cyan-400" />
-                GitHub Profile
-              </a>
+              {/* Phone & Location Metadata */}
+              <div className="pt-6 border-t border-[#3A2F0B] space-y-3 text-xs text-[#B8B8B8]">
+                <p className="flex items-center gap-2.5">
+                  <Phone size={14} className="text-[#34d399]" />
+                  <span>Phone: <a href={`tel:${phone}`} className="hover:text-white font-semibold transition-colors">{phone}</a></span>
+                </p>
+                <p className="flex items-center gap-2.5">
+                  <MapPin size={14} className="text-[#D4AF37]" />
+                  <span>Location: <span className="font-semibold text-[#F5F5F5]">{location}</span></span>
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Contact Form Column */}
           <div className="lg:col-span-7">
-            <div className="p-6 md:p-8 rounded-2xl bg-dark-card border border-dark-border shadow-lg h-full flex flex-col justify-center">
-              {isSubmitted ? (
-                <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
-                    <Check size={32} />
-                  </div>
-                  <h3 className="font-outfit text-2xl font-bold text-white">Message sent successfully!</h3>
-                  <p className="text-gray-400 text-sm max-w-md mx-auto">
-                    Thank you, your message has been sent. Sabarinathan will get back to you shortly.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Name */}
-                    <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-900 border ${errors.name ? 'border-red-500' : 'border-dark-border'} text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors`}
-                        placeholder="John Doe"
-                      />
-                      {errors.name && <span className="text-[10px] text-red-500 font-semibold">{errors.name}</span>}
-                    </div>
+            <div className="p-6 sm:p-8 rounded-2xl glass-card relative overflow-hidden">
+              <AnimatePresence>
+                {isSubmitted && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 bg-[#0A0A0A]/95 z-20 flex flex-col justify-center items-center p-6 text-center"
+                  >
+                    <motion.div
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                      className="w-16 h-16 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center mb-4 border border-[#3A2F0B]"
+                    >
+                      <Check size={28} className="text-[#D4AF37]" />
+                    </motion.div>
+                    <h4 className="font-poppins text-xl sm:text-2xl font-bold text-white mb-2">Message Sent!</h4>
+                    <p className="text-[#B8B8B8] text-xs sm:text-sm max-w-sm">
+                      Thank you for reaching out. Your message has been successfully received, and I will get back to you shortly.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-                    {/* Email */}
-                    <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Email Address</label>
-                      <input
-                        type="email"
-                        id="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-900 border ${errors.email ? 'border-red-500' : 'border-dark-border'} text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors`}
-                        placeholder="recruiter@company.com"
-                      />
-                      {errors.email && <span className="text-[10px] text-red-500 font-semibold">{errors.email}</span>}
-                    </div>
-                  </div>
-
-                  {/* Subject */}
-                  <div className="space-y-1.5">
-                    <label htmlFor="subject" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Subject</label>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Name field */}
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-[10px] font-bold text-[#B8B8B8] uppercase tracking-wider">
+                      Your Name
+                    </label>
                     <input
                       type="text"
-                      id="subject"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-900 border ${errors.subject ? 'border-red-500' : 'border-dark-border'} text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors`}
-                      placeholder="Software Engineering Internship / Full-time Role"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 rounded-md bg-[#0A0A0A]/50 border text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors ${
+                        errors.name ? 'border-red-500/50' : 'border-[#3A2F0B]'
+                      }`}
+                      placeholder="John Doe"
                     />
-                    {errors.subject && <span className="text-[10px] text-red-500 font-semibold">{errors.subject}</span>}
-                  </div>
-
-                  {/* Message */}
-                  <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Message</label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-900 border ${errors.message ? 'border-red-500' : 'border-dark-border'} text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors resize-none`}
-                      placeholder="Describe the opportunity or ask questions..."
-                    />
-                    {errors.message && <span className="text-[10px] text-red-500 font-semibold">{errors.message}</span>}
-                  </div>
-
-                  {submitError && (
-                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold">
-                      {submitError}
-                    </div>
-                  )}
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 disabled:from-indigo-800 disabled:to-cyan-800 text-white font-semibold shadow-md shadow-indigo-950/20 hover:-translate-y-0.5 disabled:translate-y-0 transition-all duration-200"
-                  >
-                    {isSubmitting ? (
-                      <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin"></span>
-                    ) : (
-                      <>
-                        <Send size={16} />
-                        Send Message
-                      </>
+                    {errors.name && (
+                      <span className="text-[10px] font-bold text-red-400 flex items-center gap-1">
+                        <AlertCircle size={10} /> {errors.name}
+                      </span>
                     )}
-                  </button>
-                </form>
-              )}
+                  </div>
+
+                  {/* Email field */}
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-[10px] font-bold text-[#B8B8B8] uppercase tracking-wider">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 rounded-md bg-[#0A0A0A]/50 border text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors ${
+                        errors.email ? 'border-red-500/50' : 'border-[#3A2F0B]'
+                      }`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && (
+                      <span className="text-[10px] font-bold text-red-400 flex items-center gap-1">
+                        <AlertCircle size={10} /> {errors.email}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Subject field */}
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="text-[10px] font-bold text-[#B8B8B8] uppercase tracking-wider">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-md bg-[#0A0A0A]/50 border text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors ${
+                      errors.subject ? 'border-red-500/50' : 'border-[#3A2F0B]'
+                    }`}
+                    placeholder="Project Inquiry / Job Opportunity"
+                  />
+                  {errors.subject && (
+                    <span className="text-[10px] font-bold text-red-400 flex items-center gap-1">
+                      <AlertCircle size={10} /> {errors.subject}
+                    </span>
+                  )}
+                </div>
+
+                {/* Message field */}
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-[10px] font-bold text-[#B8B8B8] uppercase tracking-wider">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-md bg-[#0A0A0A]/50 border text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] transition-colors resize-none ${
+                      errors.message ? 'border-red-500/50' : 'border-[#3A2F0B]'
+                    }`}
+                    placeholder="Hi Sabarinathan, I'd like to discuss a project..."
+                  />
+                  {errors.message && (
+                    <span className="text-[10px] font-bold text-red-400 flex items-center gap-1">
+                      <AlertCircle size={10} /> {errors.message}
+                    </span>
+                  )}
+                </div>
+
+                {/* Submit response error alert */}
+                {submitError && (
+                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
+                    <AlertCircle size={14} className="flex-shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-[#D4AF37] hover:bg-[#FFD700] text-[#0A0A0A] font-bold text-xs uppercase tracking-wider shadow-lg transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-[#0A0A0A] border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={13} />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
 

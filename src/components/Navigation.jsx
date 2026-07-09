@@ -20,11 +20,10 @@ export default function Navigation() {
   // Monitor scroll for glass effect and active section tracking
   useEffect(() => {
     const handleScroll = () => {
-      // Background shift on scroll
       setScrolled(window.scrollY > 20);
 
-      // Section tracking
-      const scrollPosition = window.scrollY + 120; // offset for sticky bar
+      // Section tracking for sticky navbar active state
+      const scrollPosition = window.scrollY + 120;
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el) {
@@ -54,40 +53,42 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'glass-effect border-b border-dark-border py-4 shadow-lg' : 'bg-transparent py-6'
+        scrolled ? 'glass-effect border-b border-[#3A2F0B] py-3 shadow-lg' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center w-full">
-        {/* Logo */}
+        {/* Logo / Brand Name */}
         <button
           onClick={() => scrollToSection('hero')}
-          className="font-outfit text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-tight text-white flex items-center gap-1.5 sm:gap-2.5 focus:outline-none"
+          className="flex items-center gap-2.5 focus:outline-none group text-base sm:text-lg"
         >
           <img
             src="/profile.png"
-            alt="Sabarinathan Profile"
-            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-slate-700/60 flex-shrink-0"
+            alt="SK Profile"
+            className="w-7 h-7 rounded-full object-cover border border-[#3A2F0B] group-hover:border-[#FFD700] transition-all duration-300 flex-shrink-0"
           />
-          <span className="truncate">SABARINATHAN</span>
+          <span className="font-poppins tracking-normal font-extrabold text-[#F5F5F5] group-hover:text-[#FFD700] transition-colors duration-300">
+            SABARINATHAN <span className="text-[#D4AF37]">K</span>
+          </span>
         </button>
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-8">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-6">
             {sections.map((section) => (
               <li key={section.id}>
                 <button
                   onClick={() => scrollToSection(section.id)}
-                  className={`text-sm font-medium transition-colors hover:text-cyan-400 relative py-1.5 ${
-                    activeSection === section.id ? 'text-white' : 'text-gray-400'
+                  className={`text-xs font-semibold uppercase tracking-wider transition-colors hover:text-[#FFD700] relative py-1.5 ${
+                    activeSection === section.id ? 'text-[#D4AF37] font-bold' : 'text-[#B8B8B8]'
                   }`}
                 >
                   {section.label}
                   {activeSection === section.id && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-indigo-500 to-cyan-500"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-[#D4AF37] rounded-full shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
                     />
                   )}
                 </button>
@@ -98,29 +99,29 @@ export default function Navigation() {
           <a
             href="/Sabarinathan_Resume.pdf"
             download="Sabarinathan_Resume.pdf"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white shadow-md shadow-indigo-950/20 transition-all duration-200"
+            className="flex items-center gap-1.5 px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-md bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#FFD700] hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 transition-all duration-300"
           >
-            <Download size={14} />
+            <Download size={13} />
             Resume
           </a>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex lg:hidden items-center gap-4">
+        <div className="flex lg:hidden items-center gap-3">
           <a
             href="/Sabarinathan_Resume.pdf"
             download="Sabarinathan_Resume.pdf"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-600 text-white shadow-md"
+            className="flex items-center gap-1 px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider rounded-md bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#FFD700]"
           >
-            <Download size={12} />
+            <Download size={11} />
             Resume
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-400 hover:text-white focus:outline-none"
+            className="text-[#B8B8B8] hover:text-[#FFD700] focus:outline-none p-1"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -132,16 +133,16 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="lg:hidden w-full glass-effect border-b border-dark-border"
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="lg:hidden w-full glass-effect border-b border-[#3A2F0B] overflow-hidden"
           >
-            <ul className="px-6 py-4 flex flex-col gap-4">
+            <ul className="px-6 py-4 flex flex-col gap-3">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
                     onClick={() => scrollToSection(section.id)}
-                    className={`text-left w-full py-2 text-sm font-medium transition-colors ${
-                      activeSection === section.id ? 'text-cyan-400' : 'text-gray-300 hover:text-white'
+                    className={`text-left w-full py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                      activeSection === section.id ? 'text-[#FFD700] font-bold' : 'text-[#B8B8B8] hover:text-[#FFD700]'
                     }`}
                   >
                     {section.label}

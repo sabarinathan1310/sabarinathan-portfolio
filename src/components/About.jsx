@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Compass, Brain, Globe, Heart } from 'lucide-react';
+import { Award, Compass, Brain, Globe, Heart, GraduationCap, MapPin } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import CurvedStar from './CurvedStar';
 
 export default function About() {
-  const { summary, careerObjective, languages, hobbies } = portfolioData.personalInfo;
+  const { summary, careerObjective } = portfolioData.personalInfo;
+  const education = portfolioData.education;
   
   // Soft skills mapping with corresponding icons for visual appeal
   const softSkills = [
@@ -14,69 +16,81 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-dark-card/30 relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+    <section id="about" className="py-24 relative overflow-hidden bg-transparent border-b border-[#3A2F0B]">
+      {/* Background glow spot */}
+      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-outfit text-3xl md:text-4xl font-bold text-white mb-4">
-            About <span className="gradient-text">Me</span>
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#F5F5F5] mb-4">
+            About <span className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] bg-clip-text text-transparent">Me</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* Content Split Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Summary Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <h3 className="font-outfit text-2xl font-bold text-white mb-2">
-              My Journey & Mindset
-            </h3>
-            
-            <p className="text-gray-400 leading-relaxed text-base">
-              {summary}
-            </p>
+          {/* Left Column: Intro & Summary */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#F5F5F5] font-poppins">
+                My Journey & Ambitions
+              </h3>
+              <p className="text-[#B8B8B8] leading-relaxed text-sm sm:text-base font-normal">
+                {summary}
+              </p>
+            </div>
 
-            <div className="p-6 rounded-xl bg-dark-card border border-dark-border gradient-bg">
-              <h4 className="font-semibold text-white mb-2 font-outfit text-lg">Career Objective</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
+            {/* Career Objective (Glassmorphism Card) */}
+            <div className="p-6 rounded-2xl glass-card relative overflow-hidden group border-l-4 border-l-[#D4AF37]">
+               <h4 className="font-semibold text-[#F5F5F5] mb-2.5 text-base sm:text-lg font-poppins flex items-center gap-2">
+                <CurvedStar size={24} color="#D4AF37" className="mr-0.5" /> Career Objective
+              </h4>
+              <p className="text-[#B8B8B8] text-xs sm:text-sm leading-relaxed">
                 {careerObjective}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-              {/* Languages */}
-              <div className="p-5 rounded-xl bg-dark-card border border-dark-border">
-                <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <Globe size={16} className="text-cyan-400" />
-                  Languages
+            {/* Languages & Hobbies Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              {/* Languages Card */}
+              <div className="p-5 rounded-2xl glass-card relative overflow-hidden group">
+                <h4 className="font-bold text-[#F5F5F5] mb-3 text-sm sm:text-base font-poppins flex items-center gap-2">
+                  <Globe className="text-[#D4AF37]" size={16} /> Languages
                 </h4>
-                <ul className="space-y-1.5 text-sm text-gray-400">
-                  {languages.map((lang, idx) => (
-                    <li key={idx}>{lang}</li>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-[#B8B8B8] font-normal">
+                  {portfolioData.personalInfo.languages.map((lang, idx) => (
+                    <li key={idx} className="flex items-center gap-2.5">
+                      <CurvedStar size={18} color="#FFD700" className="animate-pulse" />
+                      {lang}
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Hobbies / Interests */}
-              <div className="p-5 rounded-xl bg-dark-card border border-dark-border">
-                <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <Heart size={16} className="text-indigo-400" />
-                  Hobbies & Interests
+              {/* Hobbies Card */}
+              <div className="p-5 rounded-2xl glass-card relative overflow-hidden group">
+                <h4 className="font-bold text-[#F5F5F5] mb-3 text-sm sm:text-base font-poppins flex items-center gap-2">
+                  <Heart className="text-[#D4AF37]" size={16} /> Hobbies & Interests
                 </h4>
-                <ul className="space-y-1.5 text-sm text-gray-400">
-                  {hobbies.map((hobby, idx) => (
-                    <li key={idx}>{hobby}</li>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-[#B8B8B8] font-normal">
+                  {portfolioData.personalInfo.hobbies.map((hobby, idx) => (
+                    <li key={idx} className="flex items-center gap-2.5">
+                      <CurvedStar size={18} color="#FFD700" className="animate-pulse" />
+                      {hobby}
+                    </li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Soft Skills Column */}
+          {/* Right Column: Personal Strengths */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="font-outfit text-2xl font-bold text-white mb-2">
+            <h3 className="font-poppins text-xl sm:text-2xl font-bold text-[#F5F5F5] mb-2">
               Core Strengths
             </h3>
 
@@ -86,15 +100,22 @@ export default function About() {
                 return (
                   <motion.div
                     key={index}
-                    whileHover={{ x: 6 }}
-                    className="p-5 rounded-xl bg-dark-card border border-dark-border flex gap-4 transition-all duration-200"
+                    whileHover={{ y: -4, borderColor: 'rgba(212, 175, 55, 0.4)' }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.1 }}
+                    className="p-5 rounded-2xl glass-card flex gap-4 transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="p-3 rounded-lg bg-indigo-500/10 text-indigo-400 h-fit">
+                    {/* Corner gradient glow on hover */}
+                    <div className="absolute -right-8 -bottom-8 w-20 h-20 bg-[#D4AF37]/5 rounded-full blur-lg group-hover:bg-[#D4AF37]/10 transition-all duration-300"></div>
+                    
+                    <div className="p-3.5 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] h-fit w-fit flex-shrink-0 group-hover:bg-[#D4AF37] group-hover:text-[#0A0A0A] transition-all duration-300">
                       <IconComponent size={20} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white mb-1 font-outfit">{skill.name}</h4>
-                      <p className="text-gray-400 text-xs leading-relaxed">{skill.desc}</p>
+                      <h4 className="font-bold text-[#F5F5F5] mb-1.5 text-sm sm:text-base font-poppins">{skill.name}</h4>
+                      <p className="text-[#B8B8B8] text-xs leading-relaxed">{skill.desc}</p>
                     </div>
                   </motion.div>
                 );

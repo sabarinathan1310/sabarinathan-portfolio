@@ -10,6 +10,8 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import NeuralBackground from './components/NeuralBackground';
+import CurvedStar from './components/CurvedStar';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +25,18 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -32,12 +46,12 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-50 bg-[#0B0F19] flex flex-col justify-center items-center"
+            className="fixed inset-0 z-50 bg-[#0A0A0A] flex flex-col justify-center items-center"
           >
             {/* Spinning gradient ring */}
             <div className="relative w-20 h-20 mb-6">
-              <div className="absolute inset-0 rounded-full border-4 border-slate-800"></div>
-              <div className="absolute inset-0 rounded-full border-4 border-t-indigo-500 border-r-cyan-500 animate-spin"></div>
+              <div className="absolute inset-0 rounded-full border-4 border-[#3A2F0B]/30"></div>
+              <div className="absolute inset-0 rounded-full border-4 border-t-[#FFD700] border-r-[#D4AF37] animate-spin"></div>
             </div>
 
             {/* Glowing load text */}
@@ -45,16 +59,16 @@ export default function App() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="font-outfit text-xl font-bold tracking-widest text-white uppercase flex items-center gap-2"
+              className="font-poppins text-xl font-bold tracking-widest text-[#F5F5F5] uppercase flex items-center gap-2"
             >
               Sabarinathan
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              <CurvedStar size={18} color="#FFD700" className="animate-pulse ml-1" style={{ filter: 'drop-shadow(0 0 6px rgba(212,175,55,0.6))' }} />
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 0.5 }}
               transition={{ delay: 0.4, duration: 0.4 }}
-              className="text-gray-400 text-xs mt-2 uppercase tracking-wider font-semibold"
+              className="text-[#B8B8B8] text-xs mt-2 uppercase tracking-wider font-semibold"
             >
               Portfolio Loading
             </motion.p>
@@ -65,12 +79,15 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col min-h-screen"
+            className="flex flex-col min-h-screen relative"
           >
+            {/* Background Particle Network */}
+            <NeuralBackground />
+
             {/* Main Application Shell */}
             <Navigation />
             
-            <main className="flex-grow">
+            <main className="flex-grow relative z-10">
               <Hero />
               <About />
               <Skills />

@@ -7,8 +7,8 @@ export const portfolioData = {
     location: "Ariyalur, Tamilnadu",
     github: "https://github.com/sabarinathan1310",
     linkedin: "https://www.linkedin.com/in/sabariengineer",
-    summary: "Detail-oriented Computer Engineering graduate with a strong foundation in programming and data concepts. Skilled in problem-solving, logical thinking, and working with structured data. Looking for an entry-level role where I can apply my technical skills and grow in a professional environment.",
-    careerObjective: "Passionate Computer Science Engineering student interested in Software Development, Data Analytics, and Problem Solving. Seeking a challenging role to contribute to software design and engineering solutions.",
+    summary: "I am a passionate Computer Science Engineering student with a deep interest in building intelligent software solutions. My journey started with mastering core coding concepts in Java and Python, which expanded into developing AI chatbot models and full-stack web architectures. I thrive on translating complex logic into clean, robust code and love building systems that deliver impactful experiences.",
+    careerObjective: "Seeking a challenging software engineering role or internship where I can apply my skills in front-end development, Python engineering, and AI chatbot creation to build modern, reliable, and scalable products.",
     mindset: "Dedicated to continuous learning, practicing programming regularly, and exploring emerging technological trends.",
     hobbies: ["Practicing programming", "Browsing tech contents"],
     languages: ["Tamil (Native)", "English (Professional)"]
@@ -17,9 +17,9 @@ export const portfolioData = {
     {
       category: "Programming Languages",
       items: [
-        { name: "Java", level: "Advanced" },
+        { name: "Java", level: "Intermediate" },
         { name: "Python", level: "Advanced" },
-        { name: "C", level: "Intermediate" }
+        { name: "C", level: "Basic" }
       ]
     },
     {
@@ -27,7 +27,7 @@ export const portfolioData = {
       items: [
         { name: "HTML5", level: "Advanced" },
         { name: "CSS3", level: "Advanced" },
-        { name: "JavaScript", level: "Advanced" }
+        { name: "JavaScript", level: "Intermediate" }
       ]
     },
     {
@@ -113,7 +113,7 @@ export const portfolioData = {
       degree: "Bachelor of Engineering in Computer Science and Engineering",
       institution: "Oxford Engineering College | Anna University",
       period: "2022 - 2026",
-      status: "Expected Graduation: 2026"
+      status: "Graduated: 2026"
     },
     {
       degree: "Higher Secondary School",

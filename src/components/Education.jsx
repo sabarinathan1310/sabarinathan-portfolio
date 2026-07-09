@@ -1,67 +1,81 @@
 import React from 'react';
-import { Calendar, GraduationCap, MapPin } from 'lucide-react';
+import { Calendar, GraduationCap, MapPin, Award } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import CurvedStar from './CurvedStar';
 
 export default function Education() {
   const educationList = portfolioData.education;
 
   return (
-    <section id="education" className="py-24 relative overflow-hidden">
+    <section id="education" className="py-24 relative overflow-hidden bg-transparent border-b border-[#3A2F0B]">
       {/* Background radial highlight */}
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-4xl mx-auto px-6 relative">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-outfit text-3xl md:text-4xl font-bold text-white mb-4">
-            My <span className="gradient-text">Education</span>
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#F5F5F5] mb-4">
+            My <span className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] bg-clip-text text-transparent">Education</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
         </div>
 
         {/* Timeline Layout */}
-        <div className="relative border-l border-dark-border pl-6 md:pl-10 space-y-12">
+        <div className="relative border-l border-[#3A2F0B] ml-4 md:ml-6 pl-8 md:pl-10 space-y-12">
+          
           {educationList.map((edu, idx) => (
             <div key={idx} className="relative group">
-              {/* Timeline dot */}
-              <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-cyan-500 group-hover:bg-cyan-400 group-hover:scale-110 transition-all duration-300"></div>
+              {/* Timeline Indicator Star */}
+              <div className="absolute left-[-43px] md:left-[-51px] top-6 w-6 h-6 flex items-center justify-center group-hover:scale-125 transition-transform duration-300 z-10">
+                <div className="relative flex items-center justify-center">
+                  <CurvedStar size={24} color="#D4AF37" cutout={true} className="drop-shadow-[0_0_6px_rgba(212,175,55,0.3)]" />
+                  <CurvedStar size={10} color="#FFD700" className="absolute" />
+                </div>
+              </div>
 
-              {/* Card Container */}
-              <div className="p-6 rounded-2xl bg-dark-card border border-dark-border gradient-bg shadow-md group-hover:border-cyan-500/30 transition-all duration-300">
+              {/* Glassmorphism Education Card */}
+              <div className="p-6 sm:p-8 rounded-2xl glass-card hover:border-[#D4AF37]/50 transition-all duration-300 relative overflow-hidden">
+                {/* Accent glow on hover */}
+                <div className="absolute -right-8 -top-8 w-24 h-24 bg-[#D4AF37]/5 rounded-full blur-xl group-hover:bg-[#D4AF37]/10 transition-all duration-300"></div>
+
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    {/* Degree */}
-                    <h3 className="font-outfit text-lg md:text-xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-200">
+                  <div className="space-y-1.5">
+                    <h3 className="font-poppins text-lg sm:text-xl font-bold text-white group-hover:text-[#D4AF37] transition-colors duration-200">
                       {edu.degree}
                     </h3>
-                    {/* Institution */}
-                    <p className="text-gray-300 font-semibold text-sm mt-1 flex items-center gap-1.5">
-                      <GraduationCap size={16} className="text-indigo-400" />
+                    <p className="text-[#B8B8B8] font-semibold text-xs sm:text-sm">
                       {edu.institution}
                     </p>
                   </div>
-
-                  {/* Period badge */}
-                  <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-gray-300 bg-slate-900/60 border border-dark-border h-fit w-fit">
-                    <Calendar size={12} className="text-cyan-400" />
+                  
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#B8B8B8] bg-[#0A0A0A] border border-[#3A2F0B] px-3 py-1.5 rounded-md flex items-center gap-1.5 self-start whitespace-nowrap">
+                    <Calendar size={12} className="text-[#FFD700]" />
                     {edu.period}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-gray-400">
-                  <span className="font-medium px-2 py-0.5 rounded bg-cyan-950/40 text-cyan-400 border border-cyan-500/20">
-                    {edu.status}
+                <div className="flex flex-wrap gap-3 items-center pt-4 border-t border-[#3A2F0B] mt-4 text-xs">
+                  <span className="text-[#B8B8B8] flex items-center gap-1">
+                    <MapPin size={13} className="text-[#D4AF37]" />
+                    Ariyalur, Tamilnadu
                   </span>
                   
-                  {/* Geographic Location */}
-                  <span className="flex items-center gap-1 text-[11px]">
-                    <MapPin size={12} />
-                    Tamil Nadu, India
+                  <span className="text-[#B8B8B8] flex items-center gap-1 ml-auto sm:ml-0">
+                    <Award size={13} className="text-[#FFD700]" />
+                    {edu.status}
                   </span>
+
+                  {edu.grade && (
+                    <span className="inline-block text-[10px] font-bold text-[#FFD700] bg-[#FFD700]/5 px-2.5 py-1 rounded border border-[#3A2F0B] shadow-[0_0_8px_rgba(212,175,55,0.05)]">
+                      {edu.grade}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>
