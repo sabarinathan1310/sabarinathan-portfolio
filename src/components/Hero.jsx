@@ -94,7 +94,7 @@ export default function Hero() {
           whileHover={{ y: -8, scale: 1.02 }}
           className="lg:col-span-5 flex justify-center lg:justify-start order-1"
         >
-          <div className="relative group cursor-pointer">
+          <div className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[310px] lg:h-[310px] aspect-square relative group cursor-pointer">
             {/* Glowing Backdrop (Pure Gold) */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#FFD700] opacity-15 blur-2xl group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"></div>
             
@@ -102,11 +102,11 @@ export default function Hero() {
             <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-[#3A2F0B] via-[#D4AF37] to-[#FFD700] opacity-40 group-hover:opacity-90 blur-[3px] transition-all duration-500 pointer-events-none"></div>
             
             {/* Profile Image container (Circle Profile) */}
-            <div className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[310px] lg:h-[310px] rounded-full overflow-hidden bg-[#121212] relative z-10 p-1.5 flex items-center justify-center border border-[#3A2F0B] shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.45)] group-hover:border-[#D4AF37]/55 transition-all duration-500">
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#121212] relative z-10 p-1.5 flex items-center justify-center border border-[#3A2F0B] shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.45)] group-hover:border-[#D4AF37]/55 transition-all duration-500 aspect-square">
               <img
                 src="/profile.png"
                 alt="Sabarinathan K"
-                className="w-full h-full object-cover rounded-full filter brightness-95 group-hover:brightness-100 transition-all duration-500"
+                className="w-full h-full object-cover rounded-full filter brightness-95 group-hover:brightness-100 transition-all duration-500 aspect-square"
               />
             </div>
             

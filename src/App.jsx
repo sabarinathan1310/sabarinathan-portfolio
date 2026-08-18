@@ -9,7 +9,6 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
 import NeuralBackground from './components/NeuralBackground';
 import CurvedStar from './components/CurvedStar';
 
@@ -98,7 +97,6 @@ export default function App() {
             </main>
 
             <Footer />
-            <ScrollToTop />
           </motion.div>
         )}
       </AnimatePresence>

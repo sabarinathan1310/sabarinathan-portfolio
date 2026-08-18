@@ -15,8 +15,8 @@ const GithubIcon = ({ size = 15, className = "" }) => (
 const projectImages = {
   1: "/projects/missing_person_ai.png",
   2: "/projects/garage_crm.png",
-  3: "/projects/fraud_detection.png",
-  4: "/projects/transit_analysis.png"
+  3: "/projects/pong_game.png",
+  4: "/projects/breakout_game.png"
 };
 
 // Map card index to gold/bronze gradient accent line classes
@@ -32,7 +32,7 @@ export default function Projects() {
   const [toastMsg, setToastMsg] = useState(null);
   const projects = portfolioData.projects;
 
-  const categories = ["All", "AI & ML", "Software Development", "Data Analytics"];
+  const categories = ["All", "AI & ML", "Software Development", "Games"];
 
   const filteredProjects = activeFilter === "All"
     ? projects

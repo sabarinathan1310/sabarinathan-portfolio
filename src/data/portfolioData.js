@@ -69,7 +69,7 @@ export const portfolioData = {
         "Developed AI system to identify missing persons from images using facial recognition algorithms.",
         "Built deep learning face detection pipeline with preprocessing for varied lighting conditions to ensure high accuracy."
       ],
-      github: "https://github.com/sabarinathan1310"
+      github: "https://github.com/sabarinathan1310/Finding-Missing-Person-Using-AI"
     },
     {
       id: 2,
@@ -81,31 +81,33 @@ export const portfolioData = {
         "Built garage management system with custom Apex triggers and Lightning UI for order tracking.",
         "Automated customer service reminders and billing using Salesforce flows, reducing manual entries."
       ],
-      github: "https://github.com/sabarinathan1310"
+      github: "https://github.com/sabarinathan1310/garage-management-system"
     },
     {
       id: 3,
-      title: "Fraud Detection in Financial Transactions",
-      category: "Data Analytics",
-      tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "SMOTE"],
-      description: "Engineered a machine learning pipeline to identify fraudulent bank transactions with high recall rates.",
+      title: "Pong Game",
+      category: "Games",
+      tech: ["Python", "Turtle Graphics", "Time Module"],
+      description: "A simple two-player Pong Game built using Python's Turtle graphics module, recreating the classic arcade experience.",
       details: [
-        "Handled severe class imbalance using SMOTE (Synthetic Minority Over-sampling Technique).",
-        "Achieved high precision and recall scores using ensemble classifiers for risk classification."
+        "Built two-player local gameplay with responsive keyboard controls for paddle movement.",
+        "Implemented real-time score tracking and dynamic ball speed scaling after paddle collisions.",
+        "Configured game logic with a winning condition threshold declaring a winner at 10 points."
       ],
-      github: "https://github.com/sabarinathan1310"
+      github: "https://github.com/sabarinathan1310/pong-game"
     },
     {
       id: 4,
-      title: "Public Transportation Data Analysis",
-      category: "Data Analytics",
-      tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      description: "Analyzed route efficiencies, scheduling bottlenecks, and passenger loads to optimize bus transit schedules.",
+      title: "Breakout Game",
+      category: "Games",
+      tech: ["Python", "Pygame"],
+      description: "A classic arcade Breakout Game developed using Python and Pygame featuring full physics and collision detection.",
       details: [
-        "Analyzed passenger load and routes to identify critical congestion nodes and underutilized schedules.",
-        "Created high-fidelity visual representations of bottleneck routes to support data-driven transit planning."
+        "Developed brick wall grid generator rendering 60 destroyable bricks across 10 columns and 6 rows.",
+        "Engineered real-time collision detection logic handling ball bounces off the paddle, wall, and brick boundaries.",
+        "Built automated game status flow orchestrating Game Over and Win screen states running at 60 FPS."
       ],
-      github: "https://github.com/sabarinathan1310"
+      github: "https://github.com/sabarinathan1310/break-out-game"
     }
   ],
   education: [
