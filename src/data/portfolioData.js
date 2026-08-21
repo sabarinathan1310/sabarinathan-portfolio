@@ -115,13 +115,15 @@ export const portfolioData = {
       degree: "Bachelor of Engineering in Computer Science and Engineering",
       institution: "Oxford Engineering College | Anna University",
       period: "2022 - 2026",
-      status: "Graduated: 2026"
+      status: "Graduated: 2026",
+      location: "Trichy, Tamilnadu"
     },
     {
       degree: "Higher Secondary School",
       institution: "Kalaimagal Hr. Secondary School | Thular",
       period: "2021 - 2022",
-      status: "Completed"
+      status: "Completed",
+      location: "Ariyalur, Tamilnadu"
     }
   ],
   certifications: [

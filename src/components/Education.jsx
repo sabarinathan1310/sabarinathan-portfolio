@@ -58,7 +58,7 @@ export default function Education() {
                 <div className="flex flex-wrap gap-3 items-center pt-4 border-t border-[#3A2F0B] mt-4 text-xs">
                   <span className="text-[#B8B8B8] flex items-center gap-1">
                     <MapPin size={13} className="text-[#D4AF37]" />
-                    Ariyalur, Tamilnadu
+                    {edu.location}
                   </span>
                   
                   <span className="text-[#B8B8B8] flex items-center gap-1 ml-auto sm:ml-0">

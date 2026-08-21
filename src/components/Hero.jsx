@@ -10,7 +10,7 @@ export default function Hero() {
   // Typewriter effect state
   const words = [
     "AI Agents & Chatbots",
-    "Software Engineering Solutions",
+    "Software Solutions",
     "Front-End Web Apps",
     "Python Solutions"
   ];

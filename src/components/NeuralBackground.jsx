@@ -66,7 +66,7 @@ export default function NeuralBackground() {
       draw() {
         const cx = this.x;
         const cy = this.y;
-        const spikes = 4;
+        const spikes = 5;
         const outerRadius = this.size * 2.2;
         const innerRadius = this.size * 0.7;
 
