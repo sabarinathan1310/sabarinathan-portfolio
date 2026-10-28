@@ -9,7 +9,6 @@ export const portfolioData = {
     linkedin: "https://www.linkedin.com/in/sabariengineer",
     summary: "I am a passionate Computer Science Engineering student with a deep interest in building intelligent software solutions. My journey started with mastering core coding concepts in Java and Python, which expanded into developing AI chatbot models and full-stack web architectures. I thrive on translating complex logic into clean, robust code and love building systems that deliver impactful experiences.",
     careerObjective: "Seeking a challenging software engineering role or internship where I can apply my skills in front-end development, Python engineering, and AI chatbot creation to build modern, reliable, and scalable products.",
-    mindset: "Dedicated to continuous learning, practicing programming regularly, and exploring emerging technological trends.",
     hobbies: ["Practicing programming", "Browsing tech contents"],
     languages: ["Tamil (Native)", "English (Professional)"]
   },
@@ -45,16 +44,6 @@ export const portfolioData = {
         { name: "Salesforce CRM", level: "Intermediate" },
         { name: "Salesforce Apex", level: "Intermediate" },
         { name: "MS Excel", level: "Advanced" }
-      ]
-    },
-    {
-      category: "Soft Skills",
-      items: [
-        { name: "Problem Solving", level: "Expert" },
-        { name: "Strategic Planning", level: "Advanced" },
-        { name: "Crisis Management", level: "Advanced" },
-        { name: "Creative Thinking", level: "Expert" },
-        { name: "Adaptability to Change", level: "Expert" }
       ]
     }
   ],

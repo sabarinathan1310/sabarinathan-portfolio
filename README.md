@@ -1,16 +1,43 @@
-# React + Vite
+# Sabarinathan K - Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, high-performance personal portfolio showcasing computer science engineering projects, certifications, technical skills, and software engineering experience.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Theme**: Luxury Dark & Metallic Gold with interactive particle background
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- **Fast Performance**: Optimized WebP imagery with high-priority preloading and lazy-loaded project assets.
+- **Responsive Layout**: Designed for seamless viewing across mobile, tablet, and desktop viewports.
+- **Showcase Sections**:
+  - Interactive typewriter Hero with profile presentation
+  - About section with Career Objective, Languages, and Soft Skills
+  - Technical Skills categorized by Programming Languages, Web Technologies, Databases, and Tools & CRM
+  - Featured Projects with live repository links and categorical filtering
+  - Education and verified PDF Certification credentials
+  - Interactive Contact Form and Social Connects
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-## Expanding the ESLint configuration
+### Installation
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Development
+```bash
+npm run dev
+```
+
+### Production Build
+```bash
+npm run build
+```

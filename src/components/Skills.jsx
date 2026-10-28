@@ -4,7 +4,7 @@ import { Code, Layout, Database, Sliders } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Skills() {
-  const allSkills = portfolioData.skills.filter(cat => cat.category !== "Soft Skills");
+  const allSkills = portfolioData.skills;
 
   // Helper to map levels to percentages
   const getLevelPercentage = (level) => {
