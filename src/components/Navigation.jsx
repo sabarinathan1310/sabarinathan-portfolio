@@ -62,11 +62,18 @@ export default function Navigation() {
           onClick={() => scrollToSection('hero')}
           className="flex items-center gap-2.5 focus:outline-none group text-base sm:text-lg"
         >
-          <img
-            src="/profile.png"
-            alt="SK Profile"
-            className="w-7 h-7 rounded-full object-cover border border-[#3A2F0B] group-hover:border-[#FFD700] transition-all duration-300 flex-shrink-0"
-          />
+          <picture className="w-7 h-7 flex-shrink-0">
+            <source srcSet="/profile.webp" type="image/webp" />
+            <img
+              src="/profile.png"
+              alt="SK Profile"
+              width="28"
+              height="28"
+              loading="eager"
+              decoding="async"
+              className="w-7 h-7 rounded-full object-cover border border-[#3A2F0B] group-hover:border-[#FFD700] transition-all duration-300 flex-shrink-0"
+            />
+          </picture>
           <span className="font-poppins tracking-normal font-extrabold text-[#F5F5F5] group-hover:text-[#FFD700] transition-colors duration-300">
             SABARINATHAN <span className="text-[#D4AF37]">K</span>
           </span>

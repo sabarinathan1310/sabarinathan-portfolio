@@ -18,6 +18,7 @@ export default function Hero() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typewriterText, setTypewriterText] = useState('');
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   const currentWord = words[wordIndex] || '';
   const isWaiting = (!isDeleting && charIndex === currentWord.length) || (isDeleting && charIndex === 0);
@@ -102,12 +103,26 @@ export default function Hero() {
             <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-[#3A2F0B] via-[#D4AF37] to-[#FFD700] opacity-40 group-hover:opacity-90 blur-[3px] transition-all duration-500 pointer-events-none"></div>
             
             {/* Profile Image container (Circle Profile) */}
-            <div className="w-full h-full rounded-full overflow-hidden bg-[#121212] relative z-10 p-1.5 flex items-center justify-center border border-[#3A2F0B] shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.45)] group-hover:border-[#D4AF37]/55 transition-all duration-500 aspect-square">
-              <img
-                src="/profile.png"
-                alt="Sabarinathan K"
-                className="w-full h-full object-cover rounded-full filter brightness-95 group-hover:brightness-100 transition-all duration-500 aspect-square"
-              />
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#16140e] relative z-10 p-1.5 flex items-center justify-center border border-[#3A2F0B] shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:shadow-[0_0_50px_rgba(212,175,55,0.45)] group-hover:border-[#D4AF37]/55 transition-all duration-500 aspect-square">
+              {!imgLoaded && (
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#1b170c] via-[#241e10] to-[#121212] animate-pulse flex items-center justify-center pointer-events-none">
+                  <div className="w-8 h-8 rounded-full border-2 border-[#D4AF37]/30 border-t-[#FFD700] animate-spin" />
+                </div>
+              )}
+              <picture className="w-full h-full">
+                <source srcSet="/profile.webp" type="image/webp" />
+                <img
+                  src="/profile.png"
+                  alt="Sabarinathan K"
+                  width="310"
+                  height="310"
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  onLoad={() => setImgLoaded(true)}
+                  className={`w-full h-full object-cover rounded-full filter brightness-95 group-hover:brightness-100 transition-all duration-500 aspect-square ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+                />
+              </picture>
             </div>
             
             {/* Thin Decorative Border (Outer) */}

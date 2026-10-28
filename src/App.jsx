@@ -16,10 +16,10 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate initial portfolio page load
+    // Smooth initial portfolio page entrance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, []);

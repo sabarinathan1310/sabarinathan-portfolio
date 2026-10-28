@@ -11,12 +11,12 @@ const GithubIcon = ({ size = 15, className = "" }) => (
   </svg>
 );
 
-// Map project IDs to visual illustrations
+// Map project IDs to visual illustrations (WebP with PNG fallback)
 const projectImages = {
-  1: "/projects/missing_person_ai.png",
-  2: "/projects/garage_crm.png",
-  3: "/projects/pong_game.png",
-  4: "/projects/breakout_game.png"
+  1: { webp: "/projects/missing_person_ai.webp", png: "/projects/missing_person_ai.png" },
+  2: { webp: "/projects/garage_crm.webp", png: "/projects/garage_crm.png" },
+  3: { webp: "/projects/pong_game.webp", png: "/projects/pong_game.png" },
+  4: { webp: "/projects/breakout_game.webp", png: "/projects/breakout_game.png" }
 };
 
 // Map card index to gold/bronze gradient accent line classes
@@ -102,11 +102,16 @@ export default function Projects() {
 
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden bg-[#0A0A0A] z-10 border-b border-[#3A2F0B]">
-                    <img
-                      src={projectImages[project.id]}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                    />
+                    <picture>
+                      <source srcSet={projectImages[project.id]?.webp} type="image/webp" />
+                      <img
+                        src={projectImages[project.id]?.png}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                      />
+                    </picture>
                     {/* Category overlay */}
                     <span className="absolute top-4 right-4 px-2.5 py-1 text-[9px] font-bold tracking-wider text-[#FFD700] uppercase bg-[#0A0A0A]/90 rounded-md border border-[#3A2F0B]">
                       {project.category}
