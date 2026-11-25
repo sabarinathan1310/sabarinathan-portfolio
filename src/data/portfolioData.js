@@ -17,7 +17,7 @@ export const portfolioData = {
       category: "Programming Languages",
       items: [
         { name: "Python", level: "Advanced" },
-        { name: "Java", level: "Basic" },
+        { name: "Java", level: "Intermediate" },
         { name: "C", level: "Basic" }
       ]
     },
