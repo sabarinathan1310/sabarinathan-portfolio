@@ -16,8 +16,8 @@ export const portfolioData = {
     {
       category: "Programming Languages",
       items: [
-        { name: "Java", level: "Intermediate" },
         { name: "Python", level: "Advanced" },
+        { name: "Java", level: "Basic" },
         { name: "C", level: "Basic" }
       ]
     },
@@ -41,9 +41,9 @@ export const portfolioData = {
         { name: "Git", level: "Advanced" },
         { name: "GitHub", level: "Advanced" },
         { name: "VS Code", level: "Advanced" },
-        { name: "Salesforce CRM", level: "Intermediate" },
-        { name: "Salesforce Apex", level: "Intermediate" },
-        { name: "MS Excel", level: "Advanced" }
+        { name: "Salesforce CRM", level: "Basic" },
+        { name: "Salesforce Apex", level: "Basic" },
+        { name: "MS Excel", level: "Intermediate" }
       ]
     }
   ],
@@ -61,16 +61,32 @@ export const portfolioData = {
       github: "https://github.com/sabarinathan1310/Finding-Missing-Person-Using-AI"
     },
     {
-      id: 2,
-      title: "Garage Management System",
+      id: 5,
+      title: "Spice Slice Restaurant",
       category: "Software Development",
-      tech: ["Salesforce CRM", "Apex", "Lightning Web Components", "Salesforce Flows"],
-      description: "Built an automated service coordination and customer billing system on the Salesforce CRM platform.",
+      tech: ["HTML5", "CSS3", "Responsive Design", "Netlify"],
+      description: "A modern culinary restaurant web application featuring interactive digital menus, price tiers, and direct online food ordering.",
       details: [
-        "Built garage management system with custom Apex triggers and Lightning UI for order tracking.",
-        "Automated customer service reminders and billing using Salesforce flows, reducing manual entries."
+        "Architected an interactive multi-course menu showcasing starters, main courses, and snacks with itemized pricing.",
+        "Integrated direct online order pathways and location coordinates to streamline customer ordering workflows.",
+        "Built with fully responsive CSS layout structures ensuring smooth cross-device browsing across desktop and mobile."
       ],
-      github: "https://github.com/sabarinathan1310/garage-management-system"
+      github: "https://github.com/sabarinathan1310/Spice_Slice_Restaurant",
+      demo: "https://spice-slice.netlify.app/"
+    },
+    {
+      id: 6,
+      title: "CM to Inch Converter",
+      category: "Software Development",
+      tech: ["JavaScript", "HTML5", "CSS3", "DOM Manipulation", "Netlify"],
+      description: "An interactive precision measurement utility providing instant real-time centimeter-to-inch mathematical conversions.",
+      details: [
+        "Implemented real-time mathematical conversion algorithms with two-decimal precision calculation.",
+        "Engineered instant dynamic DOM manipulation to display conversion output with zero reload latency.",
+        "Crafted a focused, mobile-friendly interface designed for rapid everyday unit calculation."
+      ],
+      github: "https://github.com/sabarinathan1310/cm_to_inch_converter",
+      demo: "https://cm-to-inch-covertor.netlify.app/"
     },
     {
       id: 3,
@@ -97,6 +113,18 @@ export const portfolioData = {
         "Built automated game status flow orchestrating Game Over and Win screen states running at 60 FPS."
       ],
       github: "https://github.com/sabarinathan1310/break-out-game"
+    },
+    {
+      id: 2,
+      title: "Garage Management System",
+      category: "Software Development",
+      tech: ["Salesforce CRM", "Apex", "Lightning Web Components", "Salesforce Flows"],
+      description: "Built an automated service coordination and customer billing system on the Salesforce CRM platform.",
+      details: [
+        "Built garage management system with custom Apex triggers and Lightning UI for order tracking.",
+        "Automated customer service reminders and billing using Salesforce flows, reducing manual entries."
+      ],
+      github: "https://github.com/sabarinathan1310/garage-management-system"
     }
   ],
   education: [

@@ -16,7 +16,9 @@ const projectImages = {
   1: { webp: "/projects/missing_person_ai.webp", png: "/projects/missing_person_ai.png" },
   2: { webp: "/projects/garage_crm.webp", png: "/projects/garage_crm.png" },
   3: { webp: "/projects/pong_game.webp", png: "/projects/pong_game.png" },
-  4: { webp: "/projects/breakout_game.webp", png: "/projects/breakout_game.png" }
+  4: { webp: "/projects/breakout_game.webp", png: "/projects/breakout_game.png" },
+  5: { webp: "/projects/spice_slice.webp", png: "/projects/spice_slice.png" },
+  6: { webp: "/projects/cm_to_inch.webp", png: "/projects/cm_to_inch.png" }
 };
 
 // Map card index to gold/bronze gradient accent line classes
@@ -166,13 +168,19 @@ export default function Projects() {
                       </a>
                       
                       <a
-                        href={project.demo}
+                        href={project.demo || '#'}
                         onClick={(e) => handleDemoClick(e, project.demo, project.title)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 px-3.5 py-1.5 rounded-md bg-[#D4AF37]/10 text-[#FFD700] hover:bg-[#D4AF37] hover:text-[#0A0A0A] text-[10px] font-bold uppercase tracking-wider transition-all duration-300 border border-[#3A2F0B] hover:border-[#FFD700] hover:shadow-[0_0_12px_rgba(212,175,55,0.3)]"
+                        target={project.demo ? "_blank" : undefined}
+                        rel={project.demo ? "noopener noreferrer" : undefined}
+                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#D4AF37]/10 text-[#FFD700] hover:bg-[#D4AF37] hover:text-[#0A0A0A] text-[10px] font-bold uppercase tracking-wider transition-all duration-300 border border-[#3A2F0B] hover:border-[#FFD700] hover:shadow-[0_0_12px_rgba(212,175,55,0.3)]"
                       >
-                        <span>Demo</span>
+                        {project.demo && (
+                          <span className="relative flex h-1.5 w-1.5 mr-0.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FFD700]"></span>
+                          </span>
+                        )}
+                        <span>{project.demo ? "Live Demo" : "Demo"}</span>
                         <ExternalLink size={11} />
                       </a>
                     </div>
